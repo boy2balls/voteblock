@@ -1,0 +1,27 @@
+doctype html
+head
+  meta(charset='utf-8')
+  title
+  link(rel='stylesheet', href='css/style.css')
+  script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js', charset='utf-8')
+form.login-form( method= "post" action='/votepage')
+  h1 Login
+
+  .txtb
+    input(type='text' name ="walletId")
+    span(data-placeholder='WalletId')
+  .txtb
+    input(type='password' name=" password")
+    span(data-placeholder='Password')
+  input.logbtn(type='submit', value='Login')
+  .bottom-text
+    | Don&apos;t have account? 
+    a(href='/register') Sign up
+script(type='text/javascript').
+  $(".txtb input").on("focus",function(){
+  $(this).addClass("focus");
+  });
+  $(".txtb input").on("blur",function(){
+  if($(this).val() == "")
+  $(this).removeClass("focus");
+  });
