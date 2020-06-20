@@ -4,14 +4,14 @@ head
   title
   link(rel='stylesheet', href='css/style.css')
   script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js', charset='utf-8')
-form.login-form( method= "post" action='/votepage')
+form.login-form( method= "post" action='/login')
   h1 Login
 
   .txtb
     input(type='text' name ="email")
     span(data-placeholder='Email')
   .txtb
-    input(type='password' name=" password")
+    input(type='password' name="password")
     span(data-placeholder='Password')
   input.logbtn(type='submit', value='Login')
   .bottom-text

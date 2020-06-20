@@ -16,21 +16,24 @@ router.get('/register',(req,res,next)=>{
    }
 })
 
-router.get('/votepage',(req,res,next)=>{
-    res.render('votepage'),{
-        title: "votepage"
+router.get("/home",(req,res,next)=>{
+    let user = req.session.user;
+    if(user){
+        res.render('home',{opp:req.session.opp,name:user.fullname});
+        return;
     }
- })
+    res.redirect('/');
+});
 
-router.post('/votepage',(req,res,next)=>{
+router.post('/login',(req,res,next)=>{
     //res.json(req.body);
     user.login(req.body.email,req.body.password,function(result){
         if(result){
  
-             //req.session.user = result;
-             //req.session.opp=1;
-             //res.redirect('/home');
-             res.send('Welcomee '+result.email);
+             req.session.user = result;
+             req.session.opp=1;
+             res.redirect('/home');
+             //res.send('Welcomee '+result.email);
         }else{
             res.send('Username or password incorrect');
         }
