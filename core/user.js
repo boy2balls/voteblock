@@ -35,7 +35,7 @@ User.prototype = {
 
         var pwd = body.password;
         // Hash the password before insert it into the database.
-        body.password = bcrypt.hashSync(pwd,10);
+        body.password = bcrypt.hashSync(pwd,bcrypt.genSaltSync(10));
 
         // this array will contain the values of the fields.
         var bind = [];
@@ -57,10 +57,10 @@ User.prototype = {
     {
         // find the user data by  username.
         this.find(email, function(user) {
-            // if there is a user by this username.
+            // if there is a user by email
             if(user) {
                 // now  check  password.
-                if(bcrypt.compareSync(password, user.password)) {
+                if(bcrypt.compareSync(password, user.password,)) {
                     // return  data.
                     callback(user);
                     return;

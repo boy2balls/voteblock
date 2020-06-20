@@ -8,11 +8,7 @@ router.get('/',(req,res)=>{
     res.render('index',{
         title: "HomePage"
     });
-})
-
-router.get('/votepage',(req,res,next)=>{
-    res.send('this is vote page');
-})
+});
 
 router.get('/register',(req,res,next)=>{
    res.render('register-form'),{
@@ -20,9 +16,28 @@ router.get('/register',(req,res,next)=>{
    }
 })
 
+router.get('/votepage',(req,res,next)=>{
+    res.render('votepage'),{
+        title: "votepage"
+    }
+ })
+
 router.post('/votepage',(req,res,next)=>{
-    res.json(req.body);
-})
+    //res.json(req.body);
+    user.login(req.body.email,req.body.password,function(result){
+        if(result){
+ 
+             //req.session.user = result;
+             //req.session.opp=1;
+             //res.redirect('/home');
+             res.send('Welcomee '+result.email);
+        }else{
+            res.send('Username or password incorrect');
+        }
+    })
+
+ 
+});
 router.post('/register/post',(req,res,next)=>{
     let userInput ={
         email: req.body.email,
