@@ -19,7 +19,7 @@ router.get('/register',(req,res,next)=>{
 router.get("/home",(req,res,next)=>{
     let user = req.session.user;
     if(user){
-        res.render('home',{opp:req.session.opp,name:user.fullname});
+        res.render('home',{opp:req.session.opp,name:user.email});
         return;
     }
     res.redirect('/');

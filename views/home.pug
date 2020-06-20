@@ -4,6 +4,24 @@ head
   title
   link(rel='stylesheet', href='css/votepage.css')
   meta(name='viewport', content='width=device-width, initial-scale=1')
+mixin message(opp, email)
+    if(opp)
+        h1.greeting Logged in as 
+            span=email 
+    else 
+        h1.greeting Welcome 
+            span=name 
+            |  to our website
+
+
+append links 
+    li(style="float: right;")
+        a(href="/") Loggout 
+
+block content
+    .dashboard 
+        .user 
+            +message(opp, name)
 .vote-section
   h1 Vote Page
   .border
