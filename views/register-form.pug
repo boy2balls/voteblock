@@ -21,11 +21,16 @@ form.login-form( method="post" action='/votepage')
   .txtb
     input(type='password' name='confirm')
     span(data-placeholder='Confirm')
-  .txtb
+  .none
     p.bot Type of Wallet
-    select.bot
-      option(name='0') Voter
-      option(name='1') President
+    select.bot(name='type')
+      option( value='0') Voter
+      option( value='1') President
+  .none
+    p.bot Sex
+    select.bot2( name='sex')
+      option(value='0') female
+      option(value='1') male
   input.logbtn(type='submit', value='Register')
   
 script(type='text/javascript').
