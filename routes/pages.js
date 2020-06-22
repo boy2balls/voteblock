@@ -9,9 +9,9 @@ router.get('/', (req, res) => {
 });
 
 router.get('/register', (req, res, next) => {
-    res.render('register-form'), {
+    res.render('register-form', {
         title: "Register Page"
-    }
+    });
 });
 
 router.get("/home", (req, res, next) => {
@@ -25,7 +25,6 @@ router.get("/home", (req, res, next) => {
 });
 
 router.post('/login', (request, response) => {
-    var username = null;
     console.log(request.body);
     nodeFetch.default('http://127.0.0.1:8080/e-voting/login', {
         method: 'POST',
@@ -38,16 +37,17 @@ router.post('/login', (request, response) => {
             password: request.body.password,
         }),
     })
-        .then(res => {
-            if (res.ok) {
-                username = res.body();
+        .then(res => res.json())
+        .then(json => {
+            if (json.resultCode == 0) {
+                response.render('home', {name: json.data.lastName});
+            } else {
+                response.redirect('/');
             }
         })
         .catch(err => {
             response.json('err');
         });
-
-    response.render('home');
 });
 
 router.post('/register/post', (req, res, next) => {
