@@ -26,14 +26,14 @@ router.get("/home", (req, res, next) => {
 
 router.post('/login', (request, response) => {
     console.log(request.body);
-    nodeFetch.default('http://127.0.0.1:8080/e-voting/login', {
+    nodeFetch.default('https://cnm-voting-blockchain-dev.herokuapp.com/e-voting/login', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({
             requestId: Date.now().toString(),
-            walletId: request.body.email,
+            walletId: request.body.walletId,
             password: request.body.password,
         }),
     })
@@ -50,20 +50,31 @@ router.post('/login', (request, response) => {
         });
 });
 
-router.post('/register/post', (req, res, next) => {
-    let userInput = {
-        email: req.body.email,
-        firstname: req.body.firstName,
-        lastname: req.body.lastName,
-        password: req.body.password,
-        type: req.body.type,
-        sex: req.body.sex
-    };
-
-    user.create(userInput, function (lastId) {
-        if (lastId) {
-            res.send('welcome ' + userInput.email);
-        }
-    });
+router.post('/register/post', (request, response, next) => {
+    console.log(request.body);
+    nodeFetch.default('https://cnm-voting-blockchain-dev.herokuapp.com/e-voting/register',{
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            requestId: Date.now().toString(),
+            email: request.body.email,
+            firstName: request.body.firstName,
+            lastName: request.body.lastName,
+            password: request.body.password,
+            type: request.body.type,
+            sex: request.body.sex
+        })
+    
+    })
+        .then(res =>res.json())
+        .then(json=>{
+            response.render('walletpage',{
+                walletId: json.data.walletId,
+                walletAddress: json.data.walletAddress,
+                walletPrimary: json.data.walletPrimary
+            });
+        })
 });
 module.exports = router;
