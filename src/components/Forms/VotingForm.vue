@@ -7,37 +7,30 @@
 
       <md-card-content>
         <div class="md-layout">
-          <div class="md-layout-item md-small-size-100 md-size-50">
-            <md-field :class="validRemindName">
-              <label>Tên gợi nhớ</label>
-              <md-input v-model="form.remindName" type="text"></md-input>
-              <span class="md-error">Tên tối thiểu 2 ký tự</span>
+          <div class="md-layout-item md-small-size-100 md-size-100">
+            <md-field :class="validAddress">
+              <label>Địa chỉ ví</label>
+              <md-input v-model="form.address" type="text" required></md-input>
+              <span class="md-error">Tối thiểu 2 ký tự</span>
             </md-field>
           </div>
-          <!-- <div class="md-layout-item md-small-size-100 md-size-50 md-autocomplete">
-            <md-autocomplete
-              class="search"
-              v-model="form.selectedBank"
-              :md-options="banks"
-              >
-              <label>Ngân hàng</label>
-            </md-autocomplete>
-          </div>-->
-          <div class="md-layout-item md-small-size-100 md-size-50">
-            <md-field :class="validCardNumber">
-              <label>Số tài khoản</label>
-              <md-input v-model="form.cardNumber" type="number"></md-input>
-              <span class="md-error">Số tài khoản có 16 số</span>
+          <div class="md-layout-item md-small-size-100 md-size-100">
+            <md-field :class="validDescription">
+              <label>Mô tả</label>
+              <md-input v-model="form.description" type="text" required></md-input>
+              <span class="md-error">Tối thiểu 2 ký tự</span>
             </md-field>
           </div>
-          <div class="md-layout-item md-small-size-100 md-size-50">
-            <md-autocomplete class="search" v-model="form.selectedTypes" :md-options="types">
-              <label>Loại</label>
-            </md-autocomplete>
+          <div class="md-layout-item md-small-size-100 md-size-100">
+            <md-field :class="validContent">
+              <label>Nội dung</label>
+              <md-input v-model="form.content" type="text" required></md-input>
+              <span class="md-error">Tối thiểu 2 ký tự</span>
+            </md-field>
           </div>
           <md-progress-bar md-mode="indeterminate" />
           <div class="md-layout-item md-size-100 text-right">
-            <md-button type="submit" class="md-raised md-success">Thêm</md-button>
+            <md-button type="submit" class="md-raised md-success">Gửi</md-button>
           </div>
         </div>
       </md-card-content>
@@ -56,35 +49,29 @@ export default {
     },
   },
   computed: {
-    validCardNumber() {
-     return this.form.cardNumber == "" ? "" : this.form.cardNumber.length === 16 ? "" : "md-invalid"
+    validAddress() {
+     return this.form.address == "" ? "" : this.form.address.length > 1 ? "" : "md-invalid"
     },
-    validRemindName() {
-      return this.form.remindName == "" ? "" : this.form.remindName.length >=2 ? "" : "md-invalid"
+    validDescription() {
+      return this.form.description == "" ? "" : this.form.description.length > 1 ? "" : "md-invalid"
+    },
+    validContent() {
+      return this.form.content == "" ? "" : this.form.content.length > 1 ? "" : "md-invalid"
     },
   },
   data() {
     return {
       form: {
-        remindName: "",
-        selectedBank: "",
-        cardNumber: "",
-        selectedTypes: "",
+        address: "",
+        description: "",
+        content: "",
       },
-      types: ["Ghi Nợ", "Chuyển Tiền"],
     };
   },
   methods: {
     ...mapActions({
-      addReminder: "reminder/addReminder",
     }),
     submit() {
-      this.addReminder(this.form).then(() => {
-        this.form.remindName = "";
-        this.form.selectedBank = "";
-        this.form.cardNumber = "";
-        this.form.selectedTypes = "";
-      });
     },
   },
 };

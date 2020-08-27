@@ -40,7 +40,7 @@ Vue.use(VueRouter)
       },
       {
         path: "history",
-        name: "Lịch sử giao dịch",
+        name: "Lịch Sử Bỏ Phiếu",
         component: History
       },
       {

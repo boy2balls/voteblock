@@ -32,7 +32,7 @@
                 data-background-color="blue"
                 >
                 <template slot="content">
-                    <h4 class="title">Hoạt Động Số Dư</h4>
+                    <h4 class="title">Hoạt Động</h4>
                     <p class="category">
 
                     </p>
