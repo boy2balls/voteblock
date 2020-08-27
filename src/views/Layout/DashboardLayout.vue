@@ -49,7 +49,7 @@ export default {
   data() {
     return {
       sidebarBackground: "blue",
-      sidebarBackgroundImage: require("@/assets/img/sidebar-1.jpg")
+      sidebarBackgroundImage: require("@/assets/img/sidebar-4.jpg")
     };
   }
 };

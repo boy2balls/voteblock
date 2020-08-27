@@ -46,7 +46,7 @@ export default {
   props: {
     title: {
       type: String,
-      default: "LH Bank"
+      default: "Voting"
     },
     sidebarBackgroundImage: {
       type: String,
