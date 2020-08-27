@@ -10,6 +10,7 @@ import PaymentTable from "./Tables/PaymentTable.vue";
 
 //Forms
 import ChangePasswordForm from "./Forms/ChangePasswordForm.vue";
+import VotingForm from "./Forms/VotingForm.vue";
 
 export {
   ChartCard,
@@ -21,4 +22,5 @@ export {
   PaymentTable,
   
   ChangePasswordForm,
+  VotingForm,
 };

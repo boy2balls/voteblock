@@ -2,7 +2,8 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import DashboardLayout from '@/views/Layout/DashboardLayout.vue'
 import Dashboard from '@/views/Dashboard.vue'
-import AccountList from '@/views/AccountList.vue'
+import AccountInfo from '@/views/AccountInfo.vue'
+import Voting from '@/views/Voting.vue'
 import Transaction from '@/views/Transaction.vue'
 import History from '@/views/History.vue'
 import Login from '@/views/Login.vue'
@@ -24,8 +25,13 @@ Vue.use(VueRouter)
       },
       {
         path: "account",
-        name: "Danh Sách Tài Khoản",
-        component: AccountList
+        name: "Thông Tin Tài Khoản",
+        component: AccountInfo
+      },
+      {
+        path: "voting",
+        name: "Bỏ Phiếu",
+        component: Voting
       },
       {
         path: "transaction",
@@ -44,7 +50,7 @@ Vue.use(VueRouter)
       },
     ],
     meta: {
-      requiresAuth: false
+      requiresAuth: true
     }
   },
   {
@@ -80,17 +86,7 @@ router.beforeEach((to, from, next) => {
               params: { nextUrl: to.fullPath }
           })
       } else {
-          let user = JSON.parse(localStorage.getItem('user'))
-          if(to.matched.some(record => record.meta.is_admin)) {
-              if(user == 'ADMIN'){
-                  next()
-              }
-              else{
-                  next({ name: 'dashboard'})
-              }
-          }else {
-              next()
-          }
+        next()
       }
   } else if(to.matched.some(record => record.meta.guest)) {
       if(localStorage.getItem('token') == null){

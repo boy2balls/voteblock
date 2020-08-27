@@ -10,7 +10,7 @@ import Chartist from "chartist";
 
 require('@/store/subscriber')
 
-axios.defaults.baseURL = 'http://127.0.0.1:8089/e-voting'
+axios.defaults.baseURL = 'http://127.0.0.1:8080/e-voting'
 axios.defaults.headers.common['Authorization'] = localStorage.getItem('token')?.bearerToken;
 
 Vue.config.productionTip = false
