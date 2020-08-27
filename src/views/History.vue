@@ -6,7 +6,7 @@
             >
                 <md-card>
                 <md-card-header data-background-color="blue">
-                    <h4 class="title">Giao dịch chuyển</h4>
+                    <h4 class="title">Phiếu nhận</h4>
                 </md-card-header>
                 <md-card-content>
                     <history-send-table table-header-color="green"></history-send-table>
@@ -18,7 +18,7 @@
             >
                 <md-card>
                 <md-card-header data-background-color="blue">
-                    <h4 class="title">Giao dịch nhận</h4>
+                    <h4 class="title">Phiếu bầu</h4>
                 </md-card-header>
                 <md-card-content>
                     <history-receiver-table table-header-color="green"></history-receiver-table>

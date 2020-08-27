@@ -7,7 +7,6 @@ import UserCard from "./Cards/UserCard";
 // Tables
 import HistorySendTable from "./Tables/HistorySendTable.vue";
 import HistoryReceiverTable from "./Tables/HistoryReceiverTable.vue";
-import PaymentTable from "./Tables/PaymentTable.vue";
 
 //Forms
 import ChangePasswordForm from "./Forms/ChangePasswordForm.vue";
@@ -21,7 +20,6 @@ export {
 
   HistorySendTable,
   HistoryReceiverTable,
-  PaymentTable,
   
   ChangePasswordForm,
   VotingForm,
