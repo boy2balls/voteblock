@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 import auth from './auth'
 import account from './modules/account'
 import transaction from './modules/transaction'
+import content from './modules/content'
 
 Vue.use(Vuex)
 
@@ -38,5 +39,6 @@ export default new Vuex.Store({
     auth,
     account,
     transaction,
+    content
   }
 })

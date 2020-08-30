@@ -13,6 +13,10 @@
         <md-icon>person</md-icon>
         <p>Thông tin tài khoản</p>
       </sidebar-link>
+      <sidebar-link to="/content">
+        <md-icon>create</md-icon>
+        <p>Tạo cuộc bầu cử</p>
+      </sidebar-link>
       <sidebar-link to="/voting">
         <md-icon>how_to_vote</md-icon>
         <p>Bỏ phiếu</p>

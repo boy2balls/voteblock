@@ -11,6 +11,7 @@ import HistoryReceiverTable from "./Tables/HistoryReceiverTable.vue";
 //Forms
 import ChangePasswordForm from "./Forms/ChangePasswordForm.vue";
 import VotingForm from "./Forms/VotingForm.vue";
+import ContentForm from "./Forms/ContentForm.vue";
 
 export {
   ChartCard,
@@ -23,4 +24,5 @@ export {
   
   ChangePasswordForm,
   VotingForm,
+  ContentForm,
 };

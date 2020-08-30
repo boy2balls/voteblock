@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import DashboardLayout from '@/views/Layout/DashboardLayout.vue'
 import Dashboard from '@/views/Dashboard.vue'
 import AccountInfo from '@/views/AccountInfo.vue'
+import Content from '@/views/Content.vue'
 import Voting from '@/views/Voting.vue'
 import Transaction from '@/views/Transaction.vue'
 import History from '@/views/History.vue'
@@ -27,6 +28,11 @@ Vue.use(VueRouter)
         path: "account",
         name: "Thông Tin Tài Khoản",
         component: AccountInfo
+      },
+      {
+        path: "content",
+        name: "Tạo Cuộc Bầu Cử",
+        component: Content
       },
       {
         path: "voting",
