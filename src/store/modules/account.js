@@ -4,15 +4,20 @@ export default ({
     namespaced: true,
 
     state: {
-        
+        account: [],
     },
 
     getters: {
-        
+        account(state) {
+            return state.account
+        }
     },
 
     mutations: {
         NO_COMMIT() {},
+        SET_ACCOUNT(state, account) {
+            state.account = account
+        }
     },
 
     actions: {
@@ -27,5 +32,9 @@ export default ({
             });
             commit('NO_COMMIT')
         },
+        async getInfo({ commit }) {
+            let response = await axios.get('get-info');
+            commit('SET_ACCOUNT', response.data.data)
+        }
     }
 })
