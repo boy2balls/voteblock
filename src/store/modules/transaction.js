@@ -22,7 +22,7 @@ export default ({
 
     actions: {
         async getTransactions({ commit }) {
-            let response = await axios('get-transactions');
+            let response = await axios('get-transactions/all');
             commit('SET_TRANSACTIONS', response.data.data.transactions)
         },
         async miningTransaction({ commit }, form) {

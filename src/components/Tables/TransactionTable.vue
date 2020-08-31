@@ -11,12 +11,12 @@
         <md-table-cell>{{ transaction.from }}</md-table-cell>
         <md-table-cell>{{ transaction.to }}</md-table-cell>
         <md-table-cell>{{ transaction.description }}</md-table-cell>
-        <md-table-cell v-if="!transaction.isMined">
+        <md-table-cell v-if="!transaction.isMined && transaction.canMine">
           <md-button class="md-dense md-success" @click="mining(transaction)">
             Duyệt
           </md-button>
         </md-table-cell>
-        <md-table-cell v-if="transaction.isMine">
+        <md-table-cell v-else>
           <md-button class="md-dense md-danger" disabled>
             Đã duyệt
           </md-button>

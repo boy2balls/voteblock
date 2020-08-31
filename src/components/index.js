@@ -5,7 +5,7 @@ import StatsCard from "./Cards/StatsCard.vue";
 import UserCard from "./Cards/UserCard";
 
 // Tables
-import HistorySendTable from "./Tables/HistorySendTable.vue";
+import BlockTable from "./Tables/BlockTable.vue";
 import HistoryReceiverTable from "./Tables/HistoryReceiverTable.vue";
 import ElectionTable from "./Tables/ElectionTable.vue";
 import TransactionTable from "./Tables/TransactionTable.vue";
@@ -21,7 +21,7 @@ export {
   StatsCard,
   UserCard,
 
-  HistorySendTable,
+  BlockTable,
   HistoryReceiverTable,
   ElectionTable,
   TransactionTable,

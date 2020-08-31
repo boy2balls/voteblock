@@ -110,4 +110,9 @@ export default {
   }
 };
 </script>
-<style></style>
+<style lang="scss">
+.md-menu-content.md-select-menu {
+  width: 420px;
+  max-width: 420px;
+}
+</style>

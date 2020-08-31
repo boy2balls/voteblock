@@ -25,9 +25,9 @@
         <md-icon>done</md-icon>
         <p>Xác nhận phiếu bầu</p>
       </sidebar-link>
-      <sidebar-link to="/history">
-        <md-icon>history</md-icon>
-        <p>Lịch sử bỏ phiếu</p>
+      <sidebar-link to="/block">
+        <md-icon>playlist_add_check</md-icon>
+        <p>Chuỗi block</p>
       </sidebar-link>
     </side-bar>
 

@@ -6,7 +6,7 @@ import AccountInfo from '@/views/AccountInfo.vue'
 import Election from '@/views/Election.vue'
 import Voting from '@/views/Voting.vue'
 import Transaction from '@/views/Transaction.vue'
-import History from '@/views/History.vue'
+import Block from '@/views/Block.vue'
 import Login from '@/views/Login.vue'
 import ChangePassword from '@/views/ChangePassword.vue'
 import Register from '@/views/Register.vue'
@@ -45,9 +45,9 @@ Vue.use(VueRouter)
         component: Transaction
       },
       {
-        path: "history",
-        name: "Lịch Sử Bỏ Phiếu",
-        component: History
+        path: "block",
+        name: "Chuối block",
+        component: Block
       },
       {
         path: "change-password",
