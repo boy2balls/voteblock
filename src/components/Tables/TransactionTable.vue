@@ -11,8 +11,8 @@
         <md-table-cell>{{ transaction.from }}</md-table-cell>
         <md-table-cell>{{ transaction.to }}</md-table-cell>
         <md-table-cell>{{ transaction.description }}</md-table-cell>
-        <md-table-cell v-if="!transaction.isMine">
-          <md-button class="md-dense md-success" @click="mining(transaction.transId)">
+        <md-table-cell v-if="!transaction.isMined">
+          <md-button class="md-dense md-success" @click="mining(transaction)">
             Duyệt
           </md-button>
         </md-table-cell>
@@ -45,9 +45,18 @@ export default {
   methods: {
     ...mapActions({
       getTransactions: 'transaction/getTransactions',
+      miningTransaction: 'transaction/miningTransaction',
+      notification: 'addNotification',
     }),
     mining(data) {
-      console.log(data)
+      this.miningTransaction(data).then(() => {
+        this.getTransactions();
+      }).catch(() => {
+        this.notification({
+          type: 'danger',
+          message: 'Duyệt không hợp lệ.'
+        });
+      })
     }
   },
   created() {

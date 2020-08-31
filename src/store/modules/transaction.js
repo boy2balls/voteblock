@@ -25,5 +25,12 @@ export default ({
             let response = await axios('get-transactions');
             commit('SET_TRANSACTIONS', response.data.data.transactions)
         },
+        async miningTransaction({ commit }, form) {
+            await axios.post('mine-transaction', {
+                signature: form.signature,
+                transId: form.transId
+            });
+            commit('NO_COMMIT')
+        }
     }
 })
