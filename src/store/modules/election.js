@@ -53,6 +53,12 @@ export default ({
             });
             commit('NO_COMMIT')
             return response.data.data;
+        },
+        async registerElector({ commit }, contentId) {
+            await axios.post('register-elector', {
+                contentId: contentId
+            })
+            commit('NO_COMMIT')
         }
     }
 })
