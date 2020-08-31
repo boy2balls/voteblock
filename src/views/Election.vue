@@ -2,11 +2,6 @@
   <div class="content">
     <div class="md-layout md-alignment-center">
       <div
-        class="md-layout-item md-medium-size-100 md-xsmall-size-100 md-size-66"
-      >
-        <election-form data-background-color="blue"></election-form>
-      </div>
-      <div
         class="md-layout-item md-medium-size-100 md-xsmall-size-100 md-size-100"
       >
         <md-card>
@@ -17,6 +12,11 @@
               <election-table table-header-color="green"></election-table>
           </md-card-content>
         </md-card>
+      </div>
+      <div
+        class="md-layout-item md-medium-size-100 md-xsmall-size-100 md-size-66"
+      >
+        <election-form data-background-color="blue"></election-form>
       </div>
     </div>
   </div>
