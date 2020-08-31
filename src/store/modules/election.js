@@ -5,11 +5,21 @@ export default ({
 
     state: {
         elections: [],
+        electors: [],
     },
 
     getters: {
         elections(state) {
             return state.elections
+        },
+        electors(state) {
+            var arr = [];
+            state.electors.forEach(elector => {
+                if (!elector.register) {
+                    arr.push(elector)
+                }
+            });
+            return arr
         }
     },
 
@@ -24,6 +34,10 @@ export default ({
 
         SET_ELECTIONS (state, elections) {
             state.elections = elections
+        },
+
+        SET_ELECTORS (state, electors) {
+            state.electors = electors
         },
 
         NO_COMMIT () {},
@@ -44,6 +58,7 @@ export default ({
             commit('SET_ELECTIONS', response.data.data.contents)
         },
         async voting({ commit }, form) {
+            console.log(form)
             let response = await axios.post('voting', {
                 receiverWallet: form.address,
                 value: 1,
@@ -59,6 +74,10 @@ export default ({
                 contentId: contentId
             })
             commit('NO_COMMIT')
+        },
+        async getElectors({ commit }, contentId) {
+            let response = await axios.get('get-elector/' + contentId);
+            commit('SET_ELECTORS', response.data.data.electors)
         }
     }
 })

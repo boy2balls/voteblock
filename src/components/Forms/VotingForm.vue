@@ -10,7 +10,7 @@
           <div class="md-layout-item md-small-size-100 md-size-100">
             <md-field>
               <label>Cuộc bầu cử</label>
-              <md-select v-model="form.contentId">
+              <md-select v-model="form.contentId" @md-selected="parseElectors()">
                 <md-option v-for="election in elections" v-bind:key="election.contentId" :value="election.contentId">
                   {{ election.content }}
                 </md-option>
@@ -18,10 +18,13 @@
             </md-field>
           </div>
           <div class="md-layout-item md-small-size-100 md-size-100">
-            <md-field :class="validAddress">
+            <md-field>
               <label>Địa chỉ ví</label>
-              <md-input v-model="form.address" type="text" required></md-input>
-              <span class="md-error">Tối thiểu 2 ký tự</span>
+              <md-select v-model="form.address">
+                <md-option v-for="elector in electors" v-bind:key="elector.contentId" :value="elector.walletId">
+                  {{ elector.walletId }}
+                </md-option>
+              </md-select>
             </md-field>
           </div>
           <div class="md-layout-item md-small-size-100 md-size-100">
@@ -53,7 +56,8 @@ export default {
   },
   computed: {
     ...mapGetters({
-      elections: 'election/elections'
+      elections: 'election/elections',
+      electors: 'election/electors',
     }),
     validAddress() {
      return this.form.address == "" ? "" : this.form.address.length > 1 ? "" : "md-invalid"
@@ -76,6 +80,7 @@ export default {
       getElections: 'election/getElections',
       voting: 'election/voting',
       notification: 'addNotification',
+      getElectors: 'election/getElectors'
     }),
     submit() {
       this.voting(this.form).then((res) => {
@@ -85,7 +90,8 @@ export default {
           message: 'Thành công.'
         });
         this.clearParams();
-      }).catch(() => {
+      }).catch((err) => {
+        console.log(err)
         this.notification({
           type: 'danger',
           message: 'Bỏ phiếu thất bại (hết lượt).'
@@ -94,8 +100,11 @@ export default {
     },
     clearParams() {
       this.form.address = '';
-        this.form.description = '';
-        this.form.contentId = '';
+      this.form.description = '';
+      this.form.contentId = '';
+    },
+    parseElectors() {
+      this.getElectors(this.form.contentId);
     }
   },
   created() {
