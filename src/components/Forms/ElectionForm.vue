@@ -74,7 +74,7 @@ export default {
   },
   methods: {
     ...mapActions({
-      createContent: 'content/createContent',
+      createElection: 'election/createElection',
       notification: 'addNotification',
     }),
     submit() {
@@ -86,7 +86,7 @@ export default {
         description: this.form.description
       }
       console.log(validateForm);
-      this.createContent(validateForm).then(() => {
+      this.createElection(validateForm).then(() => {
         this.notification({
           type: 'success',
           message: 'Thành công.'

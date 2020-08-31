@@ -7,11 +7,12 @@ import UserCard from "./Cards/UserCard";
 // Tables
 import HistorySendTable from "./Tables/HistorySendTable.vue";
 import HistoryReceiverTable from "./Tables/HistoryReceiverTable.vue";
+import ElectionTable from "./Tables/ElectionTable.vue";
 
 //Forms
 import ChangePasswordForm from "./Forms/ChangePasswordForm.vue";
 import VotingForm from "./Forms/VotingForm.vue";
-import ContentForm from "./Forms/ContentForm.vue";
+import ElectionForm from "./Forms/ElectionForm.vue";
 
 export {
   ChartCard,
@@ -21,8 +22,9 @@ export {
 
   HistorySendTable,
   HistoryReceiverTable,
+  ElectionTable,
   
   ChangePasswordForm,
   VotingForm,
-  ContentForm,
+  ElectionForm,
 };
