@@ -8,6 +8,7 @@ import UserCard from "./Cards/UserCard";
 import HistorySendTable from "./Tables/HistorySendTable.vue";
 import HistoryReceiverTable from "./Tables/HistoryReceiverTable.vue";
 import ElectionTable from "./Tables/ElectionTable.vue";
+import TransactionTable from "./Tables/TransactionTable.vue";
 
 //Forms
 import ChangePasswordForm from "./Forms/ChangePasswordForm.vue";
@@ -23,6 +24,7 @@ export {
   HistorySendTable,
   HistoryReceiverTable,
   ElectionTable,
+  TransactionTable,
   
   ChangePasswordForm,
   VotingForm,

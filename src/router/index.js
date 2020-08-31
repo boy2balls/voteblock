@@ -41,7 +41,7 @@ Vue.use(VueRouter)
       },
       {
         path: "transaction",
-        name: "Chuyển Khoản",
+        name: "Xác nhận bỏ phiếu",
         component: Transaction
       },
       {

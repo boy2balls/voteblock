@@ -21,6 +21,10 @@
         <md-icon>how_to_vote</md-icon>
         <p>Bỏ phiếu</p>
       </sidebar-link>
+      <sidebar-link to="/transaction">
+        <md-icon>done</md-icon>
+        <p>Xác nhận phiếu bầu</p>
+      </sidebar-link>
       <sidebar-link to="/history">
         <md-icon>history</md-icon>
         <p>Lịch sử bỏ phiếu</p>
