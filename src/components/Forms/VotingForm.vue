@@ -8,6 +8,16 @@
       <md-card-content>
         <div class="md-layout">
           <div class="md-layout-item md-small-size-100 md-size-100">
+            <md-field>
+              <label>Cuộc bầu cử</label>
+              <md-select v-model="form.contentId">
+                <md-option v-for="election in elections" v-bind:key="election.contentId" :value="election.contentId">
+                  {{ election.content }}
+                </md-option>
+              </md-select>
+            </md-field>
+          </div>
+          <div class="md-layout-item md-small-size-100 md-size-100">
             <md-field :class="validAddress">
               <label>Địa chỉ ví</label>
               <md-input v-model="form.address" type="text" required></md-input>
@@ -21,13 +31,6 @@
               <span class="md-error">Tối thiểu 2 ký tự</span>
             </md-field>
           </div>
-          <div class="md-layout-item md-small-size-100 md-size-100">
-            <md-field :class="validContent">
-              <label>Nội dung</label>
-              <md-input v-model="form.content" type="text" required></md-input>
-              <span class="md-error">Tối thiểu 2 ký tự</span>
-            </md-field>
-          </div>
           <md-progress-bar md-mode="indeterminate" />
           <div class="md-layout-item md-size-100 text-right">
             <md-button type="submit" class="md-raised md-success">Gửi</md-button>
@@ -38,7 +41,7 @@
   </form>
 </template>
 <script>
-import { mapActions } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 
 export default {
   name: "voting-form",
@@ -49,14 +52,14 @@ export default {
     },
   },
   computed: {
+    ...mapGetters({
+      elections: 'election/elections'
+    }),
     validAddress() {
      return this.form.address == "" ? "" : this.form.address.length > 1 ? "" : "md-invalid"
     },
     validDescription() {
       return this.form.description == "" ? "" : this.form.description.length > 1 ? "" : "md-invalid"
-    },
-    validContent() {
-      return this.form.content == "" ? "" : this.form.content.length > 1 ? "" : "md-invalid"
     },
   },
   data() {
@@ -64,16 +67,40 @@ export default {
       form: {
         address: "",
         description: "",
-        content: "",
+        contentId: "",
       },
     };
   },
   methods: {
     ...mapActions({
+      getElections: 'election/getElections',
+      voting: 'election/voting',
+      notification: 'addNotification',
     }),
     submit() {
+      this.voting(this.form).then((res) => {
+        console.log(res);
+        this.notification({
+          type: 'success',
+          message: 'Thành công.'
+        });
+        this.clearParams();
+      }).catch(() => {
+        this.notification({
+          type: 'danger',
+          message: 'Bỏ phiếu thất bại (hết lượt).'
+        });
+      })
     },
+    clearParams() {
+      this.form.address = '';
+        this.form.description = '';
+        this.form.contentId = '';
+    }
   },
+  created() {
+    this.getElections();
+  }
 };
 </script>
 <style></style>

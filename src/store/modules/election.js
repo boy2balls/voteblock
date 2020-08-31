@@ -26,7 +26,7 @@ export default ({
             state.elections = elections
         },
 
-        NEW_CONTENT () {},
+        NO_COMMIT () {},
     },
 
     actions: {
@@ -42,6 +42,17 @@ export default ({
         async getElections({ commit }) {
             let response = await axios.get('get-vote-content');
             commit('SET_ELECTIONS', response.data.data.contents)
+        },
+        async voting({ commit }, form) {
+            let response = await axios.post('voting', {
+                receiverWallet: form.address,
+                value: 1,
+                description: form.description,
+                currency: 'vote',
+                contentId: form.contentId
+            });
+            commit('NO_COMMIT')
+            return response.data.data;
         }
     }
 })

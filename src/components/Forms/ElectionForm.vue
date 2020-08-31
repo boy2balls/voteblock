@@ -93,9 +93,9 @@ export default {
         });
       }).catch(() => {
         this.notification({
-            type: 'danger',
-            message: 'Lỗi hệ thống.'
-          });
+          type: 'danger',
+          message: 'Lỗi hệ thống.'
+        });
       })
     },
     onChange(data) {
