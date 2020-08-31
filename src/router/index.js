@@ -9,7 +9,7 @@ import Transaction from '@/views/Transaction.vue'
 import History from '@/views/History.vue'
 import Login from '@/views/Login.vue'
 import ChangePassword from '@/views/ChangePassword.vue'
-import ForgotPassword from '@/views/ForgotPassword.vue'
+import Register from '@/views/Register.vue'
 
 Vue.use(VueRouter)
 
@@ -68,9 +68,9 @@ Vue.use(VueRouter)
     }
   },
   {
-    path: "/forgot-password",
-    component: ForgotPassword,
-    name: "forgot-password",
+    path: "/register",
+    component: Register,
+    name: "register",
     meta: {
       guest: true
     }

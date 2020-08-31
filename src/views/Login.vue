@@ -19,7 +19,7 @@
       </div>
 
       <div class="actions md-layout md-alignment-center-space-between">
-        <a href="/forgot-password">Quên mật khẩu</a>
+        <a href="/register">Đăng ký</a>
         <md-button class="md-raised md-primary" @click="submit" v-on:keyup.enter="submit">Đăng nhập</md-button>
       </div>
 

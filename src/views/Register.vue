@@ -8,14 +8,35 @@
 
       <div class="form">
         <md-field>
-          <label>Tên tài khoản</label>
-          <md-input v-model="username" autofocus></md-input>
+          <label>Họ</label>
+          <md-input v-model="form.firstName" autofocus required></md-input>
+        </md-field>
+
+        <md-field>
+          <label>Tên</label>
+          <md-input v-model="form.lastName" autofocus required></md-input>
+        </md-field>
+
+        <md-field>
+          <label>Giới tính</label>
+          <md-select v-model="form.sex" required>
+            <md-option value="1">Nam</md-option>
+            <md-option value="0">Nữ</md-option>
+          </md-select>
+        </md-field>
+        <md-field>
+          <label>Email</label>
+          <md-input v-model="form.email" autofocus required></md-input>
+        </md-field>
+
+        <md-field md-has-password>
+          <label>Mật khẩu</label>
+          <md-input v-model="form.password" type="password" required></md-input>
         </md-field>
       </div>
 
-      <div class="actions md-layout md-alignment-center-space-between">
-        <md-button class="md-raised md-primary" @click="submit" v-on:keyup.enter="submit">Gửi Mail</md-button>
-        <md-button class="md-raised md-primary" href="/login">Đăng nhập</md-button>
+      <div class="actions md-layout md-alignment-center">
+        <md-button @click="submit" class="md-raised md-primary">Đăng ký</md-button>
       </div>
 
     </md-content>
@@ -27,36 +48,42 @@
 import { mapActions } from 'vuex'
 
 export default {
-  name: 'forgot-password',
+  name: 'register',
   components: {
   },
   data () {
     return {
-        username: '',
+        form: {
+          firstName: '',
+          lastName: '',
+          email: '',
+          password: '',
+          sex: '',
+        },
     }
   },
   methods: {
     ...mapActions({
       notification: 'addNotification',
-      forgotPassword: 'account/forgotPassword',
+      registerAccount: 'account/registerAccount',
     }),
 
     submit() {
-      this.forgotPassword(this.username).then(() => {
+      this.registerAccount(this.form).then( async () => {
+        await this.$router.push({
+          name: 'login'
+        });
         this.notification({
-            type: 'success',
-            message: 'Gửi mail thành công.'
+          type: 'success',
+          message: 'Thành công.'
+        });
+
+      }).catch(() => {
+        this.notification({
+          type: 'danger',
+          message: 'Email đã tồn tại.'
         });
       })
-        .catch(() => {
-            this.notification({
-                type: 'danger',
-                message: 'Tài khoản không chính xác.'
-            });
-        })
-        .finally(() => {
-            this.username = '';
-        });
     },
   }
 }

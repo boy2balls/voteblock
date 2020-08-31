@@ -83,15 +83,13 @@ export default {
       getElectors: 'election/getElectors'
     }),
     submit() {
-      this.voting(this.form).then((res) => {
-        console.log(res);
+      this.voting(this.form).then(() => {
         this.notification({
           type: 'success',
           message: 'Thành công.'
         });
         this.clearParams();
-      }).catch((err) => {
-        console.log(err)
+      }).catch(() => {
         this.notification({
           type: 'danger',
           message: 'Bỏ phiếu thất bại (hết lượt).'
