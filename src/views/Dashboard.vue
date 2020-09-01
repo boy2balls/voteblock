@@ -23,7 +23,7 @@
             <md-table-head>Địa chỉ ví</md-table-head>
             <md-table-head>Số phiếu</md-table-head>
         </md-table-row>
-        <md-table-row slot="md-table-row" v-for="elector in electors" :key="elector.contentId">
+        <md-table-row slot="md-table-row" v-for="elector in electors" :key="elector.walletId">
             <md-table-cell>{{ elector.walletId }}</md-table-cell>
             <md-table-cell>{{ elector.voted }}</md-table-cell>
         </md-table-row>

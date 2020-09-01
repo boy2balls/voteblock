@@ -21,7 +21,7 @@
             <md-field>
               <label>Địa chỉ ví</label>
               <md-select v-model="form.address">
-                <md-option v-for="elector in electors" v-bind:key="elector.contentId" :value="elector.walletId">
+                <md-option v-for="elector in electors" v-bind:key="elector.walletId" :value="elector.walletId">
                   {{ elector.walletId }}
                 </md-option>
               </md-select>

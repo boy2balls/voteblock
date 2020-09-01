@@ -78,19 +78,18 @@ export default {
       notification: 'addNotification',
     }),
     submit() {
-      console.log(this.form)
       var validateForm = {
         content: this.form.content,
         startDate: this.$moment(this.form.startDate).format("YYYY-MM-DD HH:mm:ss"),
         endDate: this.$moment(this.form.endDate).format("YYYY-MM-DD HH:mm:ss"),
         description: this.form.description
       }
-      console.log(validateForm);
       this.createElection(validateForm).then(() => {
         this.notification({
           type: 'success',
           message: 'Thành công.'
         });
+        this.$router.go()
       }).catch(() => {
         this.notification({
           type: 'danger',

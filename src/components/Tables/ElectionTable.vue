@@ -18,7 +18,7 @@
             Đăng ký
           </md-button>
         </md-table-cell>
-        <md-table-cell v-else>
+        <md-table-cell v-if="election.register">
           <md-button class="md-dense md-danger" disabled>
             Đã đăng ký
           </md-button>
