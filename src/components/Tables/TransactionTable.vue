@@ -23,6 +23,11 @@
         </md-table-cell>
       </md-table-row>
     </md-table>
+    <md-content class="md-elevation-3">
+    <div class="loading-overlay" v-if="loading">
+      <md-progress-spinner md-mode="indeterminate" :md-stroke="2"></md-progress-spinner>
+    </div>
+    </md-content>
   </div>
 </template>
 
@@ -37,6 +42,11 @@ export default {
       default: ""
     },
   },
+  data() {
+    return {
+      loading: false
+    };
+  },
   computed: {
     ...mapGetters({
       transactions: 'transaction/transactions'
@@ -49,7 +59,9 @@ export default {
       notification: 'addNotification',
     }),
     mining(data) {
+      this.loading = true;
       this.miningTransaction(data).then(() => {
+        this.loading = false;
         this.getTransactions();
       }).catch(() => {
         this.notification({
@@ -64,3 +76,18 @@ export default {
   }
 };
 </script>
+<style lang="css">
+.loading-overlay {
+  z-index: 10;
+  top: 0;
+  left: 0;
+  right: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+</style>

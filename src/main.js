@@ -11,7 +11,7 @@ import DateTimePicker from "@lazy-copilot/datetimepicker";
 
 require('@/store/subscriber')
 
-axios.defaults.baseURL = 'http://127.0.0.1:8080/e-voting'
+axios.defaults.baseURL = 'https://cnm-voting-blockchain-dev.herokuapp.com/e-voting'
 axios.defaults.headers.common['Authorization'] = localStorage.getItem('token')?.bearerToken;
 
 Vue.config.productionTip = false
